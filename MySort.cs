@@ -21,6 +21,7 @@ namespace Activity5._1._2
                 if (this.x[i] == 0)
                 {
                     this.x[i] = val;
+                    this.sz = i + 1;
                     break;
                 }
             }
@@ -34,16 +35,25 @@ namespace Activity5._1._2
             }
             this.Sorted = false;
         }
-        public void InsertionSort(int[] x, int n)
+        private void InsertionSort(int[] x, int n)
         {
-            //ToDo
-
+            for(int i = 1; i < n; ++i)
+            {
+                int k = x[i];
+                int j = i - 1;
+                while (j >= 0 && x[j] > k)
+                {
+                    x[j + 1] = x[j];
+                    j = j - 1;
+                }
+                x [j + 1] = k;
+            }
         }
         public void DataSort()
         {
             if (this.Sorted == false)
             {
-                InsertionSort(x, sz);
+                InsertionSort(this.x, this.sz);
                 this.Sorted = true;
             }
         }
